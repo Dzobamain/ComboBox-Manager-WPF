@@ -15,6 +15,18 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" Margin="10">
                 <TextBox x:Name="NewItemTextBox" Width="200" Height="30" />
+                <ComboBox x:Name="ColorItemComboBox" Width="200" Height="30" Margin="10,0,0,0">
+                    <ComboBoxItem Content="Red" />
+                    <ComboBoxItem Content="Green" />
+                    <ComboBoxItem Content="Blue" />
+                    <ComboBoxItem Content="Yellow" />
+                    <ComboBoxItem Content="Orange" />
+                    <ComboBoxItem Content="Purple" />
+                    <ComboBoxItem Content="Brown" />
+                    <ComboBoxItem Content="Gray" />
+                    <ComboBoxItem Content="Pink" />
+                    <ComboBoxItem Content="Black" />
+                </ComboBox>
                 <Button Content="Add" Width="80" Click="AddItem_Click" Margin="10,0,0,0"/>
             </StackPanel>
             
