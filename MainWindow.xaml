@@ -44,8 +44,10 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <ComboBox x:Name="ItemComboBox" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="40" Margin="5" />
-            <Button Content="Remove" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="40" Click="RemoveItem_Click" Margin="5" />
+            <ComboBox x:Name="ItemComboBox" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30" Margin="5">
+                <ComboBoxItem Content="Select a item" IsEnabled="False" Foreground="Gray" />
+            </ComboBox>
+            <Button Content="Remove" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30" Click="RemoveItem_Click" Margin="5" />
         </Grid>
     </Grid>
 </Window>
