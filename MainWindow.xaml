@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComboBox_Manager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ComboBox Manager" Height="450" Width="800">
     <Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" Margin="10">
+                <TextBox x:Name="NewItemTextBox" Width="200" Height="30" />
+                <Button Content="Add" Width="80" Click="AddItem_Click" Margin="10,0,0,0"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="10">
+                <ComboBox x:Name="ItemComboBox" Width="200" Height="30" />
+                <Button Content="Remove" Width="80" Click="RemoveItem_Click" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>
