@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComboBox_Manager"
         mc:Ignorable="d"
-        Title="ComboBox Manager" Height="450" Width="800">
+        Title="ComboBox Manager" Height="450" Width="900">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -14,7 +14,9 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" Margin="10">
-                <TextBox x:Name="NewItemTextBox" Width="200" Height="30" />
+                <TextBox x:Name="NewItemTextBox" Width="200" Height="30" Text="Enter item name" Foreground="Gray" GotFocus="NewItemTextBox_GotFocus" LostFocus="NewItemTextBox_LostFocus" />
+                <TextBox x:Name="ImagePathTextBox" Width="300" Height="30" Margin="10,0,0,0" Text="Enter image path" Foreground="Gray" GotFocus="ImagePathTextBox_GotFocus" LostFocus="ImagePathTextBox_LostFocus" />
+
                 <ComboBox x:Name="ColorItemComboBox" Width="200" Height="30" Margin="10,0,0,0">
                     <ComboBoxItem Content="Red" />
                     <ComboBoxItem Content="Green" />
@@ -29,7 +31,8 @@
                 </ComboBox>
                 <Button Content="Add" Width="80" Click="AddItem_Click" Margin="10,0,0,0"/>
             </StackPanel>
-            
+
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="10">
                 <ComboBox x:Name="ItemComboBox" Width="200" Height="30" />
                 <Button Content="Remove" Width="80" Click="RemoveItem_Click" Margin="10,0,0,0"/>

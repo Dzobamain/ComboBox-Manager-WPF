@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ComboBox_Manager
 {
@@ -26,14 +27,36 @@ namespace ComboBox_Manager
         {
             if (!string.IsNullOrWhiteSpace(NewItemTextBox.Text))
             {
-                var newItem = new ComboBoxItem
+                var newItem = new ComboBoxItem();
+
+                var stackPanel = new StackPanel { Orientation = Orientation.Horizontal };
+                var image = new System.Windows.Controls.Image
                 {
-                    Content = NewItemTextBox.Text,
-                    Background = GetSelectedColor()
+                    Width = 30,
+                    Height = 30,
+                    Margin = new Thickness(5),
+                    Source = string.IsNullOrWhiteSpace(ImagePathTextBox.Text)
+                    ? new BitmapImage(new Uri("default-avatar.png", UriKind.Relative)) // Fallback image
+                    : new BitmapImage(new Uri(ImagePathTextBox.Text, UriKind.RelativeOrAbsolute))
                 };
+                stackPanel.Children.Add(image);
+
+                var textBlock = new TextBlock
+                {
+                    Text = NewItemTextBox.Text,
+                    Margin = new Thickness(5, 0, 0, 0),
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                stackPanel.Children.Add(textBlock);
+
+                newItem.Content = stackPanel;
+
+                newItem.Background = GetSelectedColor();
 
                 ItemComboBox.Items.Add(newItem);
+
                 NewItemTextBox.Clear();
+                ImagePathTextBox.Clear();
             }
             else
             {
@@ -77,6 +100,43 @@ namespace ComboBox_Manager
 
             return new SolidColorBrush(Colors.White);
         }
+
+        private void NewItemTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (NewItemTextBox.Text == "Enter item name")
+            {
+                NewItemTextBox.Text = "";
+                NewItemTextBox.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void NewItemTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(NewItemTextBox.Text))
+            {
+                NewItemTextBox.Text = "Enter item name";
+                NewItemTextBox.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+
+        private void ImagePathTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (ImagePathTextBox.Text == "Enter image path")
+            {
+                ImagePathTextBox.Text = "";
+                ImagePathTextBox.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void ImagePathTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(ImagePathTextBox.Text))
+            {
+                ImagePathTextBox.Text = "Enter image path";
+                ImagePathTextBox.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+
     }
 }
 
