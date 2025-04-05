@@ -36,7 +36,7 @@ namespace ComboBox_Manager
                     Height = 30,
                     Margin = new Thickness(5),
                     Source = string.IsNullOrWhiteSpace(ImagePathTextBox.Text)
-                    ? new BitmapImage(new Uri("default-avatar.png", UriKind.Relative)) // Fallback image
+                    ? new BitmapImage(new Uri("default-avatar.png", UriKind.Relative))
                     : new BitmapImage(new Uri(ImagePathTextBox.Text, UriKind.RelativeOrAbsolute))
                 };
                 stackPanel.Children.Add(image);
